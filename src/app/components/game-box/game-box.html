@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="left">
+    <app-choose-choice (choiceEvent)="receiveChoice($event)" />
+  </div>
+  <div class="right">
+    <div class="navbar">
+      <a routerLink="/score">Scores -></a>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <p>{{ resultMsg }}</p>
+        <app-choices [choice]="choice" [computerChoice]="computerChoice" />
+      </div>
+    </div>
+  </div>
+</div>

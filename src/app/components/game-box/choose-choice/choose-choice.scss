@@ -1,0 +1,22 @@
+@use '../../../variables' as *;
+
+div.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+
+  h1 {
+    color: $light-text;
+    font-size: 40px;
+  }
+
+  .choice-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+  }
+}

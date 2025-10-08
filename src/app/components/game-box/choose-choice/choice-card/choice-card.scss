@@ -1,0 +1,27 @@
+@use '../../../../variables' as *;
+
+div {
+  width: 150px;
+  height: 150px;
+  padding: 30px;
+  border: 1px solid $light-border;
+  border-radius: 30px;
+  background-color: $light-bg-light;
+  box-shadow: 0px 0px 2px $light-shadow;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0px 0px 10px $light-shadow inset;
+  }
+
+  p {
+    text-align: center;
+    color: $light-text;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

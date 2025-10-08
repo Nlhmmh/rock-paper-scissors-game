@@ -1,0 +1,20 @@
+$bg-dark: hsl(0 0% 0%);
+$bg: hsl(0 0% 5%);
+$bg-light: hsl(0 0% 10%);
+$text: hsl(0 0% 95%);
+$text-muted: hsl(0 0% 70%);
+$border: hsl(0 0% 30%);
+$gradient: linear-gradient(0deg, $bg, 95%, $bg-light);
+$gradient-hover: linear-gradient(0deg, $bg, $bg-light);
+$highlight: hsl(0 0% 60%);
+
+$light-bg-dark: hsl(0 0% 90%);
+$light-bg: hsl(0 0% 95%);
+$light-bg-light: hsl(0 0% 100%);
+$light-text: hsl(0 0% 5%);
+$light-text-muted: hsl(0 0% 30%);
+$light-border: $light-bg;
+$light-gradient: linear-gradient(0deg, $light-bg, 95%, $light-bg-light);
+$light-gradient-hover: linear-gradient(0deg, $light-bg, $light-bg-light);
+$light-highlight: hsl(0 0% 100%);
+$light-shadow: hsl(0, 0%, 0%, 0.5);

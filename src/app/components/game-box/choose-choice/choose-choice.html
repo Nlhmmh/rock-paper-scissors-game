@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Choose your choice</h1>
+  <div class="choice-card-container">
+    <app-choice-card [choice]="'ROCK'" (onClicked)="onClickChoice(CHOICES.ROCK)" />
+    <app-choice-card [choice]="'PAPER'" (onClicked)="onClickChoice(CHOICES.PAPER)" />
+    <app-choice-card [choice]="'SCISSORS'" (onClicked)="onClickChoice(CHOICES.SCISSORS)" />
+  </div>
+</div>

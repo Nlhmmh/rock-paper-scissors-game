@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="choice">
+    <h3>Your Choice</h3>
+    @if (choice != CHOICES.UNDEFINED) {
+    <div class="choice-card">
+      <p>
+        {{ choice == CHOICES.ROCK ? 'ROCK' : choice == CHOICES.PAPER ? 'PAPER' : 'SCISSORS' }}
+      </p>
+    </div>
+    }
+  </div>
+  
+  <div class="horizontal-line"></div>
+
+  <div class="choice">
+    <h3>Computer's Choice</h3>
+    @if (computerChoice != CHOICES.UNDEFINED) {
+    <div class="choice-card">
+      <p>
+        {{ computerChoice == CHOICES.ROCK ? 'ROCK' : choice == CHOICES.PAPER ? 'PAPER' : 'SCISSORS' }}
+      </p>
+    </div>
+    }
+  </div>
+</div>
