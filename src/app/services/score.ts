@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core'
-import { ScoreElement, ScoreElementOnlyNecessary } from '../model/score.type'
+import { ScoreElement, ScoreElementOnlyNecessary } from '../../ts/model/score.type'
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,5 @@ export class Score {
         result: score.result
       }
     ])
-    console.log(this.scores())
   }
 }
