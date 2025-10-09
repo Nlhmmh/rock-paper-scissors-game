@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core'
 import { CHOICES } from '../../../../ts/constants'
+import { TranslatePipe } from '@ngx-translate/core'
 
 @Component({
   selector: 'app-choices',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: 'choices.html',
   styleUrls: ['choices.scss'],
 })

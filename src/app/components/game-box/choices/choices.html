@@ -1,6 +1,6 @@
 <div class="container">
   <div class="choice">
-    <h3>Your Choice</h3>
+    <h3>{{ 'app.game-page.game-box.choices.your-choice' | translate }}</h3>
     @if (choice != CHOICES.UNDEFINED) {
     <div class="choice-card">
       <p>
@@ -13,7 +13,7 @@
   <div class="horizontal-line"></div>
 
   <div class="choice">
-    <h3>Computer's Choice</h3>
+    <h3>{{ 'app.game-page.game-box.choices.computer-choice' | translate }}</h3>
     @if (computerChoice != CHOICES.UNDEFINED) {
     <div class="choice-card">
       <p>

@@ -1,34 +1,37 @@
 <div class="container">
   <div class="card">
-    <h1>Score Board</h1>
+    <h1>{{ 'app.score-page.score-board' | translate }}</h1>
     <div class="table-card">
       <table mat-table [dataSource]="scores()" class="mat-elevation-z8">
         <!-- Header -->
         <ng-container matColumnDef="no">
-          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <th mat-header-cell *matHeaderCellDef> {{ 'app.score-page.no' | translate }} </th>
           <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
         <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef> Date </th>
-          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+          <th mat-header-cell *matHeaderCellDef> {{ 'app.score-page.date' | translate }} </th>
+          <td mat-cell *matCellDef="let element"> {{element.date | date:'medium'}} </td>
         </ng-container>
         <ng-container matColumnDef="yourChoice">
-          <th mat-header-cell *matHeaderCellDef> Your Choice </th>
+          <th mat-header-cell *matHeaderCellDef> {{ 'app.score-page.your-choice' | translate }} </th>
           <td mat-cell *matCellDef="let element"> {{element.yourChoice}} </td>
         </ng-container>
         <ng-container matColumnDef="computerChoice">
-          <th mat-header-cell *matHeaderCellDef> Computer Choice </th>
+          <th mat-header-cell *matHeaderCellDef> {{ 'app.score-page.computer-choice' | translate }} </th>
           <td mat-cell *matCellDef="let element"> {{element.computerChoice}} </td>
         </ng-container>
         <ng-container matColumnDef="result">
-          <th mat-header-cell *matHeaderCellDef> Result </th>
+          <th mat-header-cell *matHeaderCellDef> {{ 'app.score-page.result' | translate }} </th>
           <td mat-cell *matCellDef="let element"> {{element.result}} </td>
         </ng-container>
         <!-- Body -->
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;" ></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+      @if (scores().length === 0) {
+      <p>{{ 'app.score-page.no-data' | translate }}</p>
+      }
     </div>
   </div>
-  <a routerLink="/">Back to Game</a>
+  <a [routerLink]="['/', currentLang]">{{ 'app.score-page.back-to-game' | translate }}</a>
 </div>

@@ -1,0 +1,38 @@
+{
+  "app": {
+    "game-page": {
+      "rock": "グー",
+      "paper": "パー",
+      "scissors": "チョキ",
+      "welcome-box": {
+        "title": "じゃんけんゲームへようこそ",
+        "start-button": "ゲームを開始する"
+      },
+      "game-box": {
+        "scores": "スコア",
+        "choose-choice": {
+          "title": "出す手を選んでください"
+        },
+        "choices": {
+          "your-choice": "あなたの手",
+          "computer-choice": "コンピューターの手"
+        },
+        "result": {
+          "win": "あなたの勝ち！",
+          "lose": "あなたの負け！",
+          "draw": "引き分け！"
+        }
+      }
+    },
+    "score-page": {
+      "score-board": "スコアボード",
+      "back-to-game": "ゲームに戻る",
+      "no": "No.",
+      "date": "日付",
+      "your-choice": "あなたの手",
+      "computer-choice": "コンピューターの手",
+      "result": "結果",
+      "no-data": "データーありません"
+    }
+  }
+}
