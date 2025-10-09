@@ -25,7 +25,6 @@ export class GameBox implements OnInit {
   constructor (private router: Router) {}
 
   ngOnInit (): void {
-    this.currentLang = this.router.url.split('/')[1]
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.updateLangs()
     })
@@ -40,6 +39,7 @@ export class GameBox implements OnInit {
   private paper = ''
   private scissors = ''
   updateLangs () {
+    this.currentLang = this.router.url.split('/')[1]
     this.winMsg = this.translate.instant('app.game-page.game-box.result.win')
     this.loseMsg = this.translate.instant('app.game-page.game-box.result.lose')
     this.tieMsg = this.translate.instant('app.game-page.game-box.result.draw')
@@ -98,5 +98,13 @@ export class GameBox implements OnInit {
           : this.scissors,
       result: this.resultMsg
     })
+  }
+
+  switchLang (event: Event) {
+    const target = event.target as HTMLSelectElement
+    const lang = target.value
+    const segments = this.router.url.split('/')
+    segments[1] = lang
+    this.router.navigateByUrl(segments.join('/'))
   }
 }

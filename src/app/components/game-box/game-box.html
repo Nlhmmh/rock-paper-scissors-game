@@ -4,6 +4,11 @@
   </div>
   <div class="right">
     <div class="navbar">
+      <select class="lang-select" [value]="currentLang" (change)="switchLang($event)">
+        <option value="en">{{ 'app.lang.en' | translate }}</option>
+        <option value="ja">{{ 'app.lang.ja' | translate }}</option>
+        <option value="my">{{ 'app.lang.my' | translate }}</option>
+      </select>
       <a [routerLink]="['/', currentLang, 'score']">{{ 'app.game-page.game-box.scores' | translate }} -></a>
     </div>
     <div class="card-container">

@@ -1,5 +1,10 @@
 {
   "app": {
+    "lang": {
+      "en": "English",
+      "ja": "Japanese",
+      "my": "Burmese"
+    },
     "game-page": {
       "rock": "Rock",
       "paper": "Paper",
