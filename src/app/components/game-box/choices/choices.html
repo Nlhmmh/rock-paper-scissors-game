@@ -1,25 +1,19 @@
 <div class="container">
   <div class="choice">
     <h3>{{ 'app.game-page.game-box.choices.your-choice' | translate }}</h3>
-    @if (choice != CHOICES.UNDEFINED) {
     <div class="choice-card">
-      <p>
-        {{ choice == CHOICES.ROCK ? 'ROCK' : choice == CHOICES.PAPER ? 'PAPER' : 'SCISSORS' }}
+      <p [class.fade-in]="isAnimating()">
+        {{ choice() === CHOICES.UNDEFINED ? '---' : CHOICES[choice()] }}
       </p>
     </div>
-    }
   </div>
-  
   <div class="horizontal-line"></div>
-
   <div class="choice">
     <h3>{{ 'app.game-page.game-box.choices.computer-choice' | translate }}</h3>
-    @if (computerChoice != CHOICES.UNDEFINED) {
     <div class="choice-card">
-      <p>
-        {{ computerChoice == CHOICES.ROCK ? 'ROCK' : choice == CHOICES.PAPER ? 'PAPER' : 'SCISSORS' }}
+      <p [class.fade-in]="isAnimating()">
+        {{ computerChoice() === CHOICES.UNDEFINED ? '---' : CHOICES[computerChoice()] }}
       </p>
     </div>
-    }
   </div>
 </div>

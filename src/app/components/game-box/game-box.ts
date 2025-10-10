@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core'
+import { Component, effect, inject, OnInit, signal } from '@angular/core'
 import { CHOICES, getRandomChoice } from '../../../ts/constants'
 import { CommonModule } from '@angular/common'
 import { ChooseChoice } from './choose-choice/choose-choice'
@@ -16,68 +16,73 @@ import { LangChangeEvent, TranslatePipe, TranslateService } from '@ngx-translate
 export class GameBox implements OnInit {
   private scoreService = inject(Score)
   private translate = inject(TranslateService)
+
+  private tieMsg = ''
+  private loseMsg = ''
+  private winMsg = ''
+  private chooseYourChoiceMsg = ''
+  private rock = ''
+  private paper = ''
+  private scissors = ''
+
   currentLang = ''
-
   resultMsg = ''
-  choice = CHOICES.UNDEFINED
-  computerChoice = CHOICES.UNDEFINED
+  choice = signal<CHOICES>(CHOICES.UNDEFINED)
+  computerChoice = signal<CHOICES>(CHOICES.UNDEFINED)
+  isAnimating = signal(false)
 
-  constructor (private router: Router) {}
+  constructor (private router: Router) {
+    effect(() => {
+      this.choice()
+      this.computerChoice()
+      this.isAnimating.set(true)
+      setTimeout(() => this.isAnimating.set(false), 400)
+    })
+  }
 
-  ngOnInit (): void {
+  ngOnInit () {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.updateLangs()
     })
     this.updateLangs()
   }
 
-  private tieMsg = ''
-  private loseMsg = ''
-  private winMsg = ''
-  private chooceYourChoiceMsg = ''
-  private rock = ''
-  private paper = ''
-  private scissors = ''
   updateLangs () {
     this.currentLang = this.router.url.split('/')[1]
     this.winMsg = this.translate.instant('app.game-page.game-box.result.win')
     this.loseMsg = this.translate.instant('app.game-page.game-box.result.lose')
     this.tieMsg = this.translate.instant('app.game-page.game-box.result.draw')
-    this.chooceYourChoiceMsg = this.translate.instant('app.game-page.game-box.choose-choice.title')
+    this.chooseYourChoiceMsg = this.translate.instant('app.game-page.game-box.choose-choice.title')
     this.rock = this.translate.instant('app.game-page.rock')
     this.paper = this.translate.instant('app.game-page.paper')
     this.scissors = this.translate.instant('app.game-page.scissors')
-    this.resultMsg = this.chooceYourChoiceMsg
+    this.resultMsg = this.chooseYourChoiceMsg
   }
 
   receiveChoice (choice: CHOICES) {
-    this.choice = choice
-    this.doComputerChoice()
+    this.choice.set(choice)
+    this.computerChoice.set(getRandomChoice())
     this.determineWinner()
     this.addScore()
   }
 
-  doComputerChoice () {
-    this.computerChoice = getRandomChoice()
-  }
-
   determineWinner () {
-    if (this.choice == CHOICES.ROCK) {
-      if (this.computerChoice == CHOICES.ROCK) this.resultMsg = this.tieMsg
-      else if (this.computerChoice == CHOICES.PAPER) this.resultMsg = this.loseMsg
-      else if (this.computerChoice == CHOICES.SCISSORS) this.resultMsg = this.winMsg
+    if (this.choice() == CHOICES.ROCK) {
+      if (this.computerChoice() == CHOICES.ROCK) this.resultMsg = this.tieMsg
+      else if (this.computerChoice() == CHOICES.PAPER) this.resultMsg = this.loseMsg
+      else if (this.computerChoice() == CHOICES.SCISSORS) this.resultMsg = this.winMsg
       return
     }
-    if (this.choice == CHOICES.PAPER) {
-      if (this.computerChoice == CHOICES.ROCK) this.resultMsg = this.winMsg
-      else if (this.computerChoice == CHOICES.PAPER) this.resultMsg = this.tieMsg
-      else if (this.computerChoice == CHOICES.SCISSORS) this.resultMsg = this.loseMsg
+    if (this.choice() == CHOICES.PAPER) {
+      if (this.computerChoice() == CHOICES.ROCK) this.resultMsg = this.winMsg
+      else if (this.computerChoice() == CHOICES.PAPER) this.resultMsg = this.tieMsg
+      else if (this.computerChoice() == CHOICES.SCISSORS) this.resultMsg = this.loseMsg
       return
     }
-    if (this.choice == CHOICES.SCISSORS) {
-      if (this.computerChoice == CHOICES.ROCK) this.resultMsg = this.loseMsg
-      else if (this.computerChoice == CHOICES.PAPER) this.resultMsg = this.winMsg
-      else if (this.computerChoice == CHOICES.SCISSORS) this.resultMsg = this.tieMsg
+    if (this.choice() == CHOICES.SCISSORS) {
+      if (this.computerChoice() == CHOICES.ROCK) this.resultMsg = this.loseMsg
+      else if (this.computerChoice() == CHOICES.PAPER) this.resultMsg = this.winMsg
+      else if (this.computerChoice() == CHOICES.SCISSORS) this.resultMsg = this.tieMsg
       return
     }
   }
@@ -85,15 +90,15 @@ export class GameBox implements OnInit {
   addScore () {
     this.scoreService.addScore({
       yourChoice:
-        this.choice == CHOICES.ROCK
+        this.choice() == CHOICES.ROCK
           ? this.rock
-          : this.choice == CHOICES.PAPER
+          : this.choice() == CHOICES.PAPER
           ? this.paper
           : this.scissors,
       computerChoice:
-        this.computerChoice == CHOICES.ROCK
+        this.computerChoice() == CHOICES.ROCK
           ? this.rock
-          : this.computerChoice == CHOICES.PAPER
+          : this.computerChoice() == CHOICES.PAPER
           ? this.paper
           : this.scissors,
       result: this.resultMsg

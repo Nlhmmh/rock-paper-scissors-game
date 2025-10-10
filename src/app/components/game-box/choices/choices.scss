@@ -41,6 +41,21 @@ div.container {
         font-size: large;
         font-weight: bold;
       }
+
+      .fade-in {
+        animation: fade-in 0.4s ease-in;
+      }
     }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

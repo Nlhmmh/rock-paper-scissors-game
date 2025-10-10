@@ -13,14 +13,19 @@ div {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  color: $light-text;
 
   &:hover {
     box-shadow: 0px 0px 10px $light-shadow inset;
   }
 
+  &:active {
+    transform: scale(0.95);
+  }
+
   p {
     text-align: center;
-    color: $light-text;
     font-size: 20px;
     font-weight: bold;
   }
