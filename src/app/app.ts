@@ -19,7 +19,7 @@ export class App {
     this.translate.addLangs(['en', 'ja', 'my'])
     this.translate.setDefaultLang('en')
     this.router.events.subscribe(() => {
-      const currentLang = this.router.url.split('/')[1]
+      const currentLang = this.translate.currentLang
       if (this.translate.getLangs().includes(currentLang)) {
         this.translate.use(currentLang)
       }

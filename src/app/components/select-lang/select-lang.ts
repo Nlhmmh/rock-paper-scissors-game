@@ -14,7 +14,7 @@ export class SelectLang implements OnInit {
   currentLang = ''
 
   ngOnInit () {
-    this.currentLang = this.router.url.split('/')[1]
+    this.currentLang = this.translate.currentLang
   }
 
   switchLang (event: Event) {

@@ -5,7 +5,7 @@ import { Score } from '../services/score'
 import { Observable } from 'rxjs'
 import { CommonModule } from '@angular/common'
 import { Router, RouterLink } from '@angular/router'
-import { TranslatePipe } from '@ngx-translate/core'
+import { TranslatePipe, TranslateService } from '@ngx-translate/core'
 
 @Component({
   selector: 'app-score-page',
@@ -15,12 +15,12 @@ import { TranslatePipe } from '@ngx-translate/core'
 })
 export class ScorePage implements OnInit {
   private scoreService = inject(Score)
+  private translate = inject(TranslateService)
+  private router = inject(Router)
   currentLang = ''
 
-  constructor (private router: Router) {}
-
   ngOnInit () {
-    this.currentLang = this.router.url.split('/')[1]
+    this.currentLang = this.translate.currentLang
   }
 
   displayedColumns: string[] = ['no', 'date', 'yourChoice', 'computerChoice', 'result']
