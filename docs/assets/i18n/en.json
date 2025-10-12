@@ -1,0 +1,43 @@
+{
+  "app": {
+    "lang": {
+      "en": "English",
+      "ja": "Japanese",
+      "my": "Burmese"
+    },
+    "game-page": {
+      "rock": "Rock",
+      "paper": "Paper",
+      "scissors": "Scissors",
+      "welcome-box": {
+        "title": "Welcome to Rock Paper Scissors Game",
+        "start-button": "PRESS TO START THE GAME"
+      },
+      "game-box": {
+        "scores": "Scores",
+        "choose-choice": {
+          "title": "Choose your choice"
+        },
+        "choices": {
+          "your-choice": "Your choice",
+          "computer-choice": "Computer's choice"
+        },
+        "result": {
+          "win": "You Win!",
+          "lose": "You Lose!",
+          "draw": "It's a Draw!"
+        }
+      }
+    },
+    "score-page": {
+      "score-board": "Score Board",
+      "back-to-game": "Back to Game",
+      "no": "No.",
+      "date": "Date",
+      "your-choice": "Your Choice",
+      "computer-choice": "Computer's Choice",
+      "result": "Result",
+      "no-data": "No data available"
+    }
+  }
+}
