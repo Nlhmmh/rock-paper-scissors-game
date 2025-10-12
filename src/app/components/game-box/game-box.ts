@@ -6,16 +6,18 @@ import { Choices } from './choices/choices'
 import { Score } from '../../services/score'
 import { Router, RouterLink } from '@angular/router'
 import { LangChangeEvent, TranslatePipe, TranslateService } from '@ngx-translate/core'
+import { SelectLang } from '../select-lang/select-lang'
 
 @Component({
   selector: 'app-game-box',
-  imports: [CommonModule, RouterLink, ChooseChoice, Choices, TranslatePipe],
+  imports: [CommonModule, RouterLink, ChooseChoice, Choices, TranslatePipe, SelectLang],
   templateUrl: './game-box.html',
   styleUrls: ['./game-box.scss']
 })
 export class GameBox implements OnInit {
   private scoreService = inject(Score)
   private translate = inject(TranslateService)
+  private router = inject(Router)
 
   private tieMsg = ''
   private loseMsg = ''
@@ -31,20 +33,10 @@ export class GameBox implements OnInit {
   computerChoice = signal<CHOICES>(CHOICES.UNDEFINED)
   isAnimating = signal(false)
 
-  constructor (private router: Router) {
-    effect(() => {
-      this.choice()
-      this.computerChoice()
-      this.isAnimating.set(true)
-      setTimeout(() => this.isAnimating.set(false), 400)
-    })
-  }
-
   ngOnInit () {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.updateLangs()
     })
-    this.updateLangs()
   }
 
   updateLangs () {
@@ -62,6 +54,10 @@ export class GameBox implements OnInit {
   receiveChoice (choice: CHOICES) {
     this.choice.set(choice)
     this.computerChoice.set(getRandomChoice())
+    this.isAnimating.set(true)
+    setTimeout(() => {
+      this.isAnimating.set(false)
+    }, 400)
     this.determineWinner()
     this.addScore()
   }
@@ -103,13 +99,5 @@ export class GameBox implements OnInit {
           : this.scissors,
       result: this.resultMsg
     })
-  }
-
-  switchLang (event: Event) {
-    const target = event.target as HTMLSelectElement
-    const lang = target.value
-    const segments = this.router.url.split('/')
-    segments[1] = lang
-    this.router.navigateByUrl(segments.join('/'))
   }
 }
