@@ -34,12 +34,14 @@ export class GameBox implements OnInit {
   isAnimating = signal(false)
 
   ngOnInit () {
+    this.updateLangs()
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.currentLang = this.translate.currentLang
+      this.updateLangs()
     })
   }
 
   updateLangs () {
+    this.currentLang = this.translate.getCurrentLang()
     this.winMsg = this.translate.instant('app.game-page.game-box.result.win')
     this.loseMsg = this.translate.instant('app.game-page.game-box.result.lose')
     this.tieMsg = this.translate.instant('app.game-page.game-box.result.draw')

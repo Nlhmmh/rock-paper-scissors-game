@@ -9,6 +9,7 @@ import { provideAnimations } from '@angular/platform-browser/animations'
 import { provideTranslateService, provideTranslateLoader } from '@ngx-translate/core'
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader'
 import { provideHttpClient } from '@angular/common/http'
+import { JsonFileLoader } from '../ts/json_file_loader'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,10 +19,11 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(),
     provideTranslateService({
-      loader: provideTranslateHttpLoader({
-        prefix: '/rock-paper-scissors-game/assets/i18n/',
-        suffix: '.json'
-      }),
+      // loader: provideTranslateHttpLoader({
+      //   prefix: '/assets/i18n/',
+      //   suffix: '.json'
+      // }),
+      loader: provideTranslateLoader(JsonFileLoader),
       fallbackLang: 'en',
       lang: 'en'
     })

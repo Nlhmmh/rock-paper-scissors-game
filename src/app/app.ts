@@ -10,25 +10,4 @@ import { CommonModule } from '@angular/common'
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
-  constructor (
-    private route: ActivatedRoute,
-    private router: Router,
-    private translate: TranslateService
-  ) {
-    this.translate.addLangs(['en', 'ja', 'my'])
-    this.translate.setDefaultLang('en')
-    this.router.events.subscribe(() => {
-      const currentLang = this.translate.currentLang
-      if (this.translate.getLangs().includes(currentLang)) {
-        this.translate.use(currentLang)
-      }
-    })
-  }
-
-  switchLang (lang: string) {
-    const segments = this.router.url.split('/')
-    segments[1] = lang
-    this.router.navigateByUrl(segments.join('/'))
-  }
-}
+export class App {}

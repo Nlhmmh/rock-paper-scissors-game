@@ -14,7 +14,7 @@ export class SelectLang implements OnInit {
   currentLang = ''
 
   ngOnInit () {
-    this.currentLang = this.translate.currentLang
+    this.currentLang = this.translate.getCurrentLang()
   }
 
   switchLang (event: Event) {
@@ -22,6 +22,7 @@ export class SelectLang implements OnInit {
     const lang = target.value
     const segments = this.router.url.split('/')
     segments[1] = lang
+    this.translate.use(lang);
     this.router.navigateByUrl(segments.join('/'))
   }
 }
