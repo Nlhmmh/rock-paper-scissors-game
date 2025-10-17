@@ -1,6 +1,6 @@
 <div class="container">
   <div class="left">
-    <app-choose-choice (choiceEvent)="receiveChoice($event)" />
+    <app-choose-choice [isBtnLoading]="isBtnLoading" (choiceEvent)="receiveChoice($event)" />
   </div>
   <div class="right">
     <div class="navbar">

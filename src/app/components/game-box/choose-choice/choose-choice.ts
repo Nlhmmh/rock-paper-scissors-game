@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output, signal, Signal } from '@angular/core'
 import { ChoiceCard } from './choice-card/choice-card'
 import { CHOICES } from '../../../../ts/constants'
 import { TranslatePipe } from '@ngx-translate/core'
@@ -10,6 +10,7 @@ import { TranslatePipe } from '@ngx-translate/core'
   styleUrls: ['./choose-choice.scss']
 })
 export class ChooseChoice {
+  @Input({ required: true }) isBtnLoading: Signal<boolean> = signal(false)
   @Output() choiceEvent = new EventEmitter<CHOICES>()
   CHOICES = CHOICES
 

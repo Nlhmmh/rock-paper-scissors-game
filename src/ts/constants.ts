@@ -12,3 +12,5 @@ export const getRandomChoice = (): CHOICES => {
   const randomIndex = Math.floor(Math.random() * validChoices.length)
   return validChoices[randomIndex]
 }
+
+export const CHOICE_LOADING_TIME = 500

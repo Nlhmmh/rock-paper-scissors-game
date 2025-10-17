@@ -1,3 +1,7 @@
-<div (click)="onClick()">
-  <p>{{choice}}</p>
+<div [ngClass]="{ loading: isBtnLoading() }" (click)="onClick()">
+  @if (isBtnLoading()) {
+  <mat-spinner diameter="50"></mat-spinner>
+  } @else {
+  <p>{{ choice }}</p>
+  }
 </div>

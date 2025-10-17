@@ -1,5 +1,5 @@
 import { Component, effect, inject, OnInit, signal } from '@angular/core'
-import { CHOICES, getRandomChoice } from '../../../ts/constants'
+import { CHOICE_LOADING_TIME, CHOICES, getRandomChoice } from '../../../ts/constants'
 import { CommonModule } from '@angular/common'
 import { ChooseChoice } from './choose-choice/choose-choice'
 import { Choices } from './choices/choices'
@@ -32,6 +32,7 @@ export class GameBox implements OnInit {
   choice = signal<CHOICES>(CHOICES.UNDEFINED)
   computerChoice = signal<CHOICES>(CHOICES.UNDEFINED)
   isAnimating = signal(false)
+  isBtnLoading = signal(false)
 
   ngOnInit () {
     this.updateLangs()
@@ -53,12 +54,15 @@ export class GameBox implements OnInit {
   }
 
   receiveChoice (choice: CHOICES) {
+    this.playSoundEffect()
     this.choice.set(choice)
     this.computerChoice.set(getRandomChoice())
+    this.isBtnLoading.set(true)
     this.isAnimating.set(true)
     setTimeout(() => {
       this.isAnimating.set(false)
-    }, 400)
+      this.isBtnLoading.set(false)
+    }, CHOICE_LOADING_TIME)
     this.determineWinner()
     this.addScore()
   }
@@ -100,5 +104,11 @@ export class GameBox implements OnInit {
           : this.scissors,
       result: this.resultMsg
     })
+  }
+
+  playSoundEffect () {
+    const audio = new Audio('assets/sounds/pop.mp3')
+    audio.load()
+    audio.play()
   }
 }

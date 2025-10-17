@@ -1,8 +1,8 @@
 <div class="container">
   <h1>{{ 'app.game-page.game-box.choose-choice.title' | translate }}</h1>
   <div class="choice-card-container">
-    <app-choice-card [choice]="'app.game-page.rock' | translate" (onClicked)="onClickChoice(CHOICES.ROCK)" />
-    <app-choice-card [choice]="'app.game-page.paper' | translate" (onClicked)="onClickChoice(CHOICES.PAPER)" />
-    <app-choice-card [choice]="'app.game-page.scissors' | translate" (onClicked)="onClickChoice(CHOICES.SCISSORS)" />
+    <app-choice-card [isBtnLoading]="isBtnLoading" [choice]="'app.game-page.rock' | translate" (onClicked)="onClickChoice(CHOICES.ROCK)" />
+    <app-choice-card [isBtnLoading]="isBtnLoading" [choice]="'app.game-page.paper' | translate" (onClicked)="onClickChoice(CHOICES.PAPER)" />
+    <app-choice-card [isBtnLoading]="isBtnLoading" [choice]="'app.game-page.scissors' | translate" (onClicked)="onClickChoice(CHOICES.SCISSORS)" />
   </div>
 </div>

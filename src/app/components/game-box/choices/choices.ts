@@ -1,5 +1,5 @@
 import { Component, computed, effect, Input, signal, Signal } from '@angular/core'
-import { CHOICES } from '../../../../ts/constants'
+import { CHOICE_LOADING_TIME, CHOICES } from '../../../../ts/constants'
 import { TranslatePipe } from '@ngx-translate/core'
 import { CommonModule } from '@angular/common'
 
@@ -20,7 +20,7 @@ export class Choices {
       this.choice()
       this.computerChoice()
       this.isAnimating.set(true)
-      setTimeout(() => this.isAnimating.set(false), 400)
+      setTimeout(() => this.isAnimating.set(false), CHOICE_LOADING_TIME)
     })
   }
 }
