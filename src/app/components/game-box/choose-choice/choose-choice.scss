@@ -20,3 +20,19 @@ div.container {
     gap: 30px;
   }
 }
+
+@media (max-width: 768px) {
+  div.container {
+    gap: 40px;
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .choice-card-container {
+      flex-direction: row;
+      gap: 10px;
+      padding: 20px;
+    }
+  }
+}

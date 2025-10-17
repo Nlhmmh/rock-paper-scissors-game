@@ -59,3 +59,23 @@ div.container {
     transform: scale(1);
   }
 }
+
+@media (max-width: 768px) {
+  div.container {
+    gap: 10px;
+
+    div.choice {
+      padding: 10px;
+      gap: 10px;
+
+      div.choice-card {
+        width: 60px;
+        height: 60px;
+
+        p {
+          font-size: medium;
+        }
+      }
+    }
+  }
+}

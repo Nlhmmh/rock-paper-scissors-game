@@ -97,3 +97,44 @@ div.container {
     transform: translateY(-8px) rotate(-1deg);
   }
 }
+
+@media (max-width: 768px) {
+  div.container {
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .left,
+    .right {
+      width: 100%;
+    }
+    .left {
+      flex: 1;
+    }
+
+    .right {
+      flex: 1;
+
+      .navbar {
+        justify-content: center;
+      }
+
+      .card-container {
+        height: 100%;
+        background-color: $bg-dark;
+        flex-direction: column;
+
+        .card {
+          padding: 20px;
+          gap: 30px;
+
+          p {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+  }
+}
