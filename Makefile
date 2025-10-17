@@ -16,7 +16,7 @@ run: ## Run server
 .PHONY: deploy-github-pages
 deploy-github-pages: ## Run server
 	ng build --base-href /rock-paper-scissors-game/
-	cp docs/index.html docs/404.html
+	cp github_pages/index.html github_pages/404.html
 
 # Docker (angular-app)
 
