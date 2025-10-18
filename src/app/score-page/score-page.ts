@@ -6,6 +6,7 @@ import { Observable } from 'rxjs'
 import { CommonModule } from '@angular/common'
 import { Router, RouterLink } from '@angular/router'
 import { TranslatePipe, TranslateService } from '@ngx-translate/core'
+import { OUTCOME } from '../../ts/model/score.type'
 
 @Component({
   selector: 'app-score-page',
@@ -18,6 +19,7 @@ export class ScorePage implements OnInit {
   private translate = inject(TranslateService)
   private router = inject(Router)
   currentLang = ''
+  OUTCOME = OUTCOME
 
   ngOnInit () {
     this.currentLang = this.translate.currentLang

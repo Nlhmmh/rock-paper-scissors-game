@@ -19,7 +19,15 @@
             <td>{{ score.date | date: 'short' }}</td>
             <td>{{ score.yourChoice }}</td>
             <td>{{ score.computerChoice }}</td>
-            <td>{{ score.result }}</td>
+            <td
+              [ngClass]="{
+                win: score.outcome == OUTCOME.WIN,
+                lose: score.outcome == OUTCOME.LOSE,
+                tie: score.outcome == OUTCOME.TIE
+              }"
+            >
+              {{ score.result }}
+            </td>
           </tr>
           } @empty {
           <p>{{ 'app.score-page.no-data' | translate }}</p>

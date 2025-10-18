@@ -7,6 +7,7 @@ import { ChooseChoice } from '../components/choose-choice/choose-choice'
 import { Choices } from '../components/choices/choices'
 import { SelectLang } from '../components/select-lang/select-lang'
 import { Score } from '../services/score'
+import { OUTCOME } from '../../ts/model/score.type'
 
 @Component({
   selector: 'app-game-box',
@@ -29,6 +30,7 @@ export class GamePage implements OnInit {
 
   currentLang = ''
   resultMsg = ''
+  currentOutcome = OUTCOME.UNDEFINED
   choice = signal<CHOICES>(CHOICES.UNDEFINED)
   computerChoice = signal<CHOICES>(CHOICES.UNDEFINED)
   isAnimating = signal(false)
@@ -64,28 +66,35 @@ export class GamePage implements OnInit {
       this.isBtnLoading.set(false)
     }, CHOICE_LOADING_TIME)
     this.determineWinner()
+    this.setResultMsg()
     this.addScore()
   }
 
   determineWinner () {
     if (this.choice() == CHOICES.ROCK) {
-      if (this.computerChoice() == CHOICES.ROCK) this.resultMsg = this.tieMsg
-      else if (this.computerChoice() == CHOICES.PAPER) this.resultMsg = this.loseMsg
-      else if (this.computerChoice() == CHOICES.SCISSORS) this.resultMsg = this.winMsg
+      if (this.computerChoice() == CHOICES.ROCK) this.currentOutcome = OUTCOME.TIE
+      else if (this.computerChoice() == CHOICES.PAPER) this.currentOutcome = OUTCOME.LOSE
+      else if (this.computerChoice() == CHOICES.SCISSORS) this.currentOutcome = OUTCOME.WIN
       return
     }
     if (this.choice() == CHOICES.PAPER) {
-      if (this.computerChoice() == CHOICES.ROCK) this.resultMsg = this.winMsg
-      else if (this.computerChoice() == CHOICES.PAPER) this.resultMsg = this.tieMsg
-      else if (this.computerChoice() == CHOICES.SCISSORS) this.resultMsg = this.loseMsg
+      if (this.computerChoice() == CHOICES.ROCK) this.currentOutcome = OUTCOME.WIN
+      else if (this.computerChoice() == CHOICES.PAPER) this.currentOutcome = OUTCOME.TIE
+      else if (this.computerChoice() == CHOICES.SCISSORS) this.currentOutcome = OUTCOME.LOSE
       return
     }
     if (this.choice() == CHOICES.SCISSORS) {
-      if (this.computerChoice() == CHOICES.ROCK) this.resultMsg = this.loseMsg
-      else if (this.computerChoice() == CHOICES.PAPER) this.resultMsg = this.winMsg
-      else if (this.computerChoice() == CHOICES.SCISSORS) this.resultMsg = this.tieMsg
+      if (this.computerChoice() == CHOICES.ROCK) this.currentOutcome = OUTCOME.LOSE
+      else if (this.computerChoice() == CHOICES.PAPER) this.currentOutcome = OUTCOME.WIN
+      else if (this.computerChoice() == CHOICES.SCISSORS) this.currentOutcome = OUTCOME.TIE
       return
     }
+  }
+
+  setResultMsg () {
+    if (this.currentOutcome == OUTCOME.WIN) this.resultMsg = this.winMsg
+    if (this.currentOutcome == OUTCOME.LOSE) this.resultMsg = this.loseMsg
+    if (this.currentOutcome == OUTCOME.TIE) this.resultMsg = this.tieMsg
   }
 
   addScore () {
@@ -102,7 +111,8 @@ export class GamePage implements OnInit {
           : this.computerChoice() == CHOICES.PAPER
           ? this.paper
           : this.scissors,
-      result: this.resultMsg
+      result: this.resultMsg,
+      outcome: this.currentOutcome
     })
   }
 

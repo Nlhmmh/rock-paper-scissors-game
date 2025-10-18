@@ -4,10 +4,19 @@ export type ScoreElement = {
   yourChoice: string
   computerChoice: string
   result: string
+  outcome: OUTCOME
 }
 
 export type ScoreElementOnlyNecessary = {
   yourChoice: string
   computerChoice: string
   result: string
+  outcome: OUTCOME
+}
+
+export enum OUTCOME {
+  UNDEFINED,
+  WIN,
+  LOSE,
+  TIE
 }

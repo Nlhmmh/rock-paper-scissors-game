@@ -66,6 +66,16 @@ div.container {
           text-align: left;
           border-bottom: 1px solid $border;
         }
+
+        .win {
+          color: green;
+        }
+        .lose {
+          color: red;
+        }
+        .tie {
+          color: black;
+        }
       }
     }
   }
