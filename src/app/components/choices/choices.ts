@@ -1,5 +1,5 @@
 import { Component, computed, effect, Input, signal, Signal } from '@angular/core'
-import { CHOICE_LOADING_TIME, CHOICES } from '../../../../ts/constants'
+import { CHOICE_LOADING_TIME, CHOICES } from '../../../ts/constants'
 import { TranslatePipe } from '@ngx-translate/core'
 import { CommonModule } from '@angular/common'
 

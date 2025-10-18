@@ -2,41 +2,37 @@
 @use '@angular/material' as mat;
 
 div.container {
-  height: calc(100vh - 60px);
-  padding: 30px 10% 30px 10%;
-  overflow: hidden;
-
+  height: 100dvh;
   color: $light-text;
   background-color: $light-bg-dark;
+  padding: 0 20vw 0 20vw;
 
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 3rem;
 
   .card {
-    width: 100%;
-    max-height: 700px;
-    padding: 30px;
+    padding: 1vw;
     border-radius: 30px;
     background-color: $light-bg;
     box-shadow: 0px 0px 5px $bg-light;
+    max-height: 80dvh;
 
     h1 {
-      font-size: 30px;
+      font-size: 2rem;
       font-weight: bold;
-      margin-bottom: 30px;
+      padding: 1rem 0 1rem 0;
     }
 
     .table-card {
-      border-radius: 10px;
+      max-height: calc(100% - 60px);
       border: 1px solid $light-border;
+      border-radius: 1rem;
       background-color: $light-bg-light;
       box-shadow: 0px 0px 1px $bg-light;
-      overflow-y: auto;
-      min-height: 100px;
-      max-height: calc(100% - 60px);
+      overflow: auto;
 
       @include mat.table-overrides(
         (
@@ -44,12 +40,12 @@ div.container {
           header-headline-color: $light-text,
           row-item-label-text-color: $light-text,
           header-headline-weight: bold,
-          header-headline-size: 16px,
+          header-headline-size: 16px
         )
       );
 
       p {
-        padding: 10px 20px 10px 20px;
+        font-size: 1rem;
         color: $light-text-muted;
       }
     }
@@ -57,7 +53,8 @@ div.container {
 
   a {
     color: $light-text;
-    font-size: 30px;
+    font-size: 2rem;
+    line-height: 2rem;
     text-decoration: none;
 
     &:hover {

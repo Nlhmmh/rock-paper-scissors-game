@@ -1,22 +1,23 @@
-@use '../../../variables' as *;
+@use '../../variables' as *;
 
 div.container {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  color: $text;
+  align-items: center;
+  gap: 1rem;
 
   div.horizontal-line {
+    height: 15rem;
     border-right: 1px solid $text-muted;
   }
 
   div.choice {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    gap: 30px;
-    padding: 30px;
+    gap: 2rem;
+    padding: min(2rem, 5%);
 
     h3 {
       color: $text-muted;
@@ -24,11 +25,10 @@ div.container {
     }
 
     div.choice-card {
-      padding: 30px;
-      width: 100px;
-      height: 100px;
-      border: 1px solid #36454f;
-      border-radius: 100px;
+      padding: min(3em, 1vw);
+      width: min(8rem, 30vw);
+      height: min(8rem, 30vw);
+      border-radius: 8rem;
       background-color: $light-bg-light;
       box-shadow: 5px 5px 10px $light-shadow inset;
 
@@ -38,7 +38,7 @@ div.container {
 
       p {
         color: $light-text;
-        font-size: large;
+        font-size: 1rem;
         font-weight: bold;
       }
 
@@ -57,25 +57,5 @@ div.container {
   to {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@media (max-width: 768px) {
-  div.container {
-    gap: 10px;
-
-    div.choice {
-      padding: 10px;
-      gap: 10px;
-
-      div.choice-card {
-        width: 60px;
-        height: 60px;
-
-        p {
-          font-size: medium;
-        }
-      }
-    }
   }
 }

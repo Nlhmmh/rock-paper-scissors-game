@@ -1,12 +1,12 @@
-@use '../../../../variables' as *;
+@use '../../../variables' as *;
 @use '@angular/material' as mat;
 
 div {
-  width: 150px;
-  height: 150px;
-  padding: 30px;
+  padding: min(3em, 1vw);
+  width: min(10rem, 25vw);
+  height: min(10rem, 25vw);
   border: 1px solid $light-border;
-  border-radius: 30px;
+  border-radius: 2rem;
   background-color: $light-bg-light;
   box-shadow: 0px 0px 2px $light-shadow;
 
@@ -27,7 +27,7 @@ div {
 
   p {
     text-align: center;
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: bold;
   }
 
@@ -41,16 +41,4 @@ div {
 div.loading {
   cursor: wait;
   opacity: 0.5;
-}
-
-@media (max-width: 768px) {
-  div {
-    width: 80px;
-    height: 80px;
-    padding: 20px;
-
-    p {
-      font-size: 16px;
-    }
-  }
 }

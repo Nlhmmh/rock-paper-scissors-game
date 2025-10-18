@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, signal, Signal } from '@angular/core'
 import { ChoiceCard } from './choice-card/choice-card'
-import { CHOICES } from '../../../../ts/constants'
+import { CHOICES } from '../../../ts/constants'
 import { TranslatePipe } from '@ngx-translate/core'
 
 @Component({

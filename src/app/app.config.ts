@@ -15,10 +15,11 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes),
+    provideRouter(routes, withViewTransitions()),
     provideAnimations(),
     provideHttpClient(),
     provideTranslateService({
+      // NOTE: Uncomment the following lines and comment out the JsonFileLoader line to use HTTP loader
       // loader: provideTranslateHttpLoader({
       //   prefix: '/assets/i18n/',
       //   suffix: '.json'

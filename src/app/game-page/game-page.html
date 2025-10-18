@@ -1,56 +1,17 @@
 <div class="container">
-  <div class="welcome-box" [ngClass]="{'fade-out': isSliding}">
-    <app-welcome-box (onToggle)="toggle()" />
+  <div class="left">
+    <app-choose-choice [isBtnLoading]="isBtnLoading" (choiceEvent)="receiveChoice($event)" />
   </div>
-  <div class="game-box" [ngClass]="{'slide-in': isSliding}">
-    <app-game-box />
+  <div class="right">
+    <div class="navbar">
+      <app-select-lang />
+      <a [routerLink]="['/', currentLang, 'score']">{{ 'app.game-page.game-box.scores' | translate }} -></a>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <p [class.fade-in]="isAnimating()">{{ resultMsg }}</p>
+        <app-choices [choice]="choice" [computerChoice]="computerChoice" />
+      </div>
+    </div>
   </div>
 </div>
-
-<style>
-  div.container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-
-    .welcome-box,
-    .game-box {
-      position: absolute;
-      width: inherit;
-      height: inherit;
-    }
-
-    .game-box {
-      transform: translateX(-100vw);
-    }
-
-    .fade-out {
-      animation: fade-out 1s ease-out forwards;
-    }
-
-    .slide-in {
-      animation: slide 1s ease-in forwards;
-    }
-  }
-
-  @keyframes fade-out {
-    0% {
-      opacity: 1;
-    }
-
-    100% {
-      opacity: 0;
-    }
-  }
-
-  @keyframes slide {
-    0% {
-      transform: translateX(-100vw);
-    }
-
-    100% {
-      transform: translateX(0);
-    }
-  }
-</style>
