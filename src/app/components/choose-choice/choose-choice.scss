@@ -21,7 +21,7 @@ div.container {
   }
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   div.container {
     .choice-card-container {
       flex-direction: row;

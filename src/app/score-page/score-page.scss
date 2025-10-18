@@ -15,19 +15,20 @@ div.container {
 
   .card {
     padding: 1rem;
-    border-radius: 30px;
+    border-radius: 0.5rem;
     background-color: $light-bg;
-    box-shadow: 0px 0px 5px $bg-light;
-    max-height: 80dvh;
+    box-shadow: 0px 0px 10px $bg-light;
+    width: 90vw;
 
     h1 {
       font-size: 2rem;
       font-weight: bold;
-      padding: 1rem 0 1rem 0;
+      padding: 1rem 0 2rem 0;
+      text-align: center;
     }
 
     .table-card {
-      max-height: calc(80dvh - 10rem);
+      max-height: 70dvh;
       border: 1px solid $light-border;
       border-radius: 1rem;
       background-color: $light-bg-light;
@@ -46,7 +47,25 @@ div.container {
 
       p {
         font-size: 1rem;
+        padding: 0.5rem;
         color: $light-text-muted;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        border-radius: 1rem;
+
+        th {
+          font-weight: 700;
+        }
+
+        th,
+        td {
+          padding: 0.5rem;
+          text-align: left;
+          border-bottom: 1px solid $border;
+        }
       }
     }
   }
@@ -54,11 +73,41 @@ div.container {
   a {
     color: $light-text;
     font-size: 2rem;
-    line-height: 2rem;
     text-decoration: none;
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  div.container {
+    .card {
+      .table-card {
+        table {
+          thead {
+            display: none;
+          }
+
+          tr td {
+            display: block;
+            border: none;
+
+            &:last-child {
+              border-bottom: 0;
+            }
+          }
+
+          tr {
+            border-bottom: 1px dashed $border;
+          }
+
+          td {
+            padding: 0.2rem;
+          }
+        }
+      }
     }
   }
 }

@@ -40,21 +40,10 @@ body {
   overflow-x: hidden;
 }
 
-:root {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-}
-
 * {
   padding: 0;
   margin: 0;
-  font-family: cursive, sans-serif;
+  font-family: 'Padauk', cursive, sans-serif;
   box-sizing: border-box;
-  // outline: 1px solid red;
-}
-
-@media (min-width: 1200px) {
-  html {
-    font-size: 112.5%; /* On large screens, the base is now 112.5% of 16px = 18px. All REM values scale up. */
-  }
+  // outline: 1px solid red; // For debugging
 }

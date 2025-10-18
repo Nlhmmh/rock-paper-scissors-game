@@ -16,7 +16,7 @@
       "game-box": {
         "scores": "スコア",
         "choose-choice": {
-          "title": "出す手を選んでください"
+          "title": "選んでください"
         },
         "choices": {
           "your-choice": "あなたの手",
