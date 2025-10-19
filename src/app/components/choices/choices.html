@@ -1,15 +1,14 @@
 <div class="container">
   <div class="choice">
-    <h3>{{ 'app.game-page.game-box.choices.your-choice' | translate }}</h3>
+    <p class="choice-title">{{ 'app.game-page.game-box.choices.your-choice' | translate }}</p>
     <div class="choice-card">
       <p [class.fade-in]="isAnimating()">
         {{ choice() === CHOICES.UNDEFINED ? '---' : CHOICES[choice()] }}
       </p>
     </div>
   </div>
-  <div class="horizontal-line"></div>
   <div class="choice">
-    <h3>{{ 'app.game-page.game-box.choices.computer-choice' | translate }}</h3>
+    <p class="choice-title">{{ 'app.game-page.game-box.choices.computer-choice' | translate }}</p>
     <div class="choice-card">
       <p [class.fade-in]="isAnimating()">
         {{ computerChoice() === CHOICES.UNDEFINED ? '---' : CHOICES[computerChoice()] }}

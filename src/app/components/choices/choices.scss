@@ -6,22 +6,19 @@ div.container {
   align-items: center;
   gap: 1rem;
 
-  div.horizontal-line {
-    height: 5rem;
-    border-right: 1px solid $text-muted;
-  }
-
   div.choice {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    padding: min(2rem, 5%);
+    gap: 1rem;
+    padding: min(2rem, 2vw);
+    width: min(15rem, 40vw);
 
-    h3 {
+    p.choice-title {
       color: $text-muted;
       font-style: italic;
+      text-align: center;
     }
 
     div.choice-card {

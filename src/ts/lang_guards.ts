@@ -9,7 +9,10 @@ export class LangGuard implements CanActivate {
 
   canActivate (route: ActivatedRouteSnapshot): boolean {
     const lang = route.paramMap.get('lang')
-    if (lang && this.translate.getLangs().includes(lang)) return true
+    if (lang && this.translate.getLangs().includes(lang)) {
+      this.translate.use(lang)
+      return true
+    }
     this.router.navigate(['/', this.translate.getCurrentLang()])
     return false
   }

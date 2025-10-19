@@ -14,3 +14,5 @@ export const getRandomChoice = (): CHOICES => {
 }
 
 export const CHOICE_LOADING_TIME = 500
+
+export const LANG_LIST = ['en', 'ja', 'my']

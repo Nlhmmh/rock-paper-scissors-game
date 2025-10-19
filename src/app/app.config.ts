@@ -26,7 +26,7 @@ export const appConfig: ApplicationConfig = {
       // }),
       loader: provideTranslateLoader(JsonFileLoader),
       fallbackLang: 'en',
-      lang: 'en'
+      lang: 'en',
     })
   ]
 }

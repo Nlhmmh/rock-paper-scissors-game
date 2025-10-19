@@ -15,6 +15,7 @@ export class ChoiceCard {
   @Output() onClicked = new EventEmitter()
 
   onClick () {
+    if (this.isBtnLoading()) return;
     this.onClicked.emit()
   }
 }

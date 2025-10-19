@@ -11,7 +11,7 @@ div.container {
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  padding: 0 1rem 0 1rem;
+  padding: 1rem;
 
   .card {
     padding: 1rem;
@@ -103,10 +103,10 @@ div.container {
           tr td {
             display: block;
             border: none;
+          }
 
-            &:last-child {
-              border-bottom: 0;
-            }
+          tr:last-child {
+            border-bottom: 0;
           }
 
           tr {
